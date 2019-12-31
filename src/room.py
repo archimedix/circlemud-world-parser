@@ -29,14 +29,15 @@ def parse_exits(text):
     for match in matches:
         direction, desc, keys, other = match
         desc = desc.rstrip('\n')
-        flag, key_num, to = other.strip().split()
+        flag, key_num, to, crypt= other.strip().split()
 
         exit = dict()
         exit['dir'] = int(direction)
         exit['desc'] = desc
         exit['keywords'] = keys.split()
         exit['key_number'] = int(key_num)
-        exit['room_linked'] = int(to)
+        exit['destination'] = int(to)
+        exit['crypt'] = int(crypt)
         exit['door_flag'] = {
             'value': int(flag),
             'note': ROOM_DOOR_FLAGS.get(int(flag), None)
