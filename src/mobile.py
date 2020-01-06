@@ -45,14 +45,19 @@ def parse_mob(text):
     d['detail_desc'] = text.split('~')[3].strip('\n')
 
     tildes = [i for i, a in enumerate(text) if a == '~']
-    start_bottom_matter = tildes[3] + 1
+    start_bottom_matter = tildes[6] + 1
     bottom_fields = text[start_bottom_matter:].strip('\n').split('\n')
 
     vector_line = bottom_fields[0]
-    action, affect, alignment, mob_type = vector_line.split()
-
+    aa, bb, cc, dd, ee, action, affect, alignment, mob_type = vector_line.split()
+    
     d['mob_type'] = mob_type
     d['alignment'] = int(alignment)
+    d['aa'] = aa
+    d['bb'] = bb
+    d['cc'] = cc
+    d['dd'] = dd
+    d['ee'] = ee
 
     action = clean_bitvector(action)
     d['flags'] = bitvector_to_flags(action, MOB_ACTION_FLAGS)
