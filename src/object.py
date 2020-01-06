@@ -59,10 +59,13 @@ def parse_object(text):
     d['short_desc'] = fields[2].rstrip('~')
     d['long_desc'] = fields[3].rstrip('~')
     d['values'] = [int(v) for v in fields[6].split()]
-    weight, cost, rent = [int(v) for v in fields[7].split()]
+    weight, cost, rent, a, b, c = [int(v) for v in fields[7].split()]
     d['weight'] = weight
     d['cost'] = cost
     d['rent'] = rent
+    d['a'] = a
+    d['b'] = b
+    d['c'] = c
 
     type_flag, effects_bits, wear_bitvector = fields[5].split()
 
